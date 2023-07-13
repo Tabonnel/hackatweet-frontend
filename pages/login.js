@@ -3,8 +3,8 @@ import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 
 
-function Login() {
+function login() {
   return <Login />;
 }
 
-export default Login;
+export default login;

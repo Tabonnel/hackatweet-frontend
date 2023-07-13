@@ -2,11 +2,13 @@ import styles from "../styles/Home.module.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import Tweet from "./Tweet";
 
 function Home() {
   const [tweetContent, setTweetContent] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+
+  const [lasttweets, setLasttweets] = useState([]);
 
   const handleInputChange = (event) => {
     const content = event.target.value;
@@ -26,11 +28,24 @@ function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        data.result
-        // setTweetsData(data)
+        // console.log(data.result);
+        // setTweetsData(data.result[0])
       });
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/tweets/alltweets")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.result);
+        setLasttweets(data.result);
+      });
+  }, []);
+
+  
+  const tweets = lasttweets.map((data, i) => {
+    return <Tweet key={i} {...data} />;
+  });
 
   return (
     <div className={styles.main}>
@@ -81,10 +96,8 @@ function Home() {
           </div>
         </div>
         <div className={styles.tweetsContainer}>
-          <div>Tweet1</div>
-          <div>Tweet2</div>
-          <div>Tweet3</div>
-        </div>
+          {tweets}
+          </div>
       </div>
       <div className={styles.rightHome}>
         <div className={styles.trendsTitle}>

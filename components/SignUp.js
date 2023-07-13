@@ -38,9 +38,9 @@ function SignUp() {
       </div>
       <p className={styles.signUpTitles}> Create your Hackatweet account</p>
       <div className={styles.btnSignUpContainer}>
-        <input className={styles.inputSignUp} placeholder="Firstname" onChange={(e) => setsignUpFirstname(e.target.value)} value={signUpFirstname} />
-        <input className={styles.inputSignUp} placeholder="Username" onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} />
-        <input className={styles.inputSignUp} placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}/>
+        <input className={styles.inputSignUp} placeholder="Firstname" type="text" onChange={(e) => setsignUpFirstname(e.target.value)} value={signUpFirstname} />
+        <input className={styles.inputSignUp} placeholder="Username" type="text" onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} />
+        <input className={styles.inputSignUp} placeholder="Password" type="password" onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}/>
         <button className={styles.btntSignUp} onClick={() => handleRegister()} >Sign Up </button>
       </div>
     </div>
