@@ -5,7 +5,7 @@ import Tweet from '../components/Tweet'
 import Trends from '../components/Trends'
 
 function Index() {
-  return <Login />;
+  return <Home />;
 }
 
 export default Index;
