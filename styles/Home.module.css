@@ -1,10 +1,9 @@
 .main {
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 4rem 0;
 }
 
 .title {
@@ -17,6 +16,174 @@
   text-decoration: none;
 }
 
-.title a:hover, .title a:focus, .title a:active {
+.title a:hover,
+.title a:focus,
+.title a:active {
   text-decoration: underline;
+}
+
+.leftHome {
+  background-color: #161f2d;
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 0.1px solid gray;
+  
+}
+.logoContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #161f2d;
+}
+
+.logo {
+  max-width: 40px;
+  max-width: 40px;
+  scale: -1;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+.leftFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userInfos {
+  display: flex;
+}
+.logoId {
+  height: 40px;
+  width: 40px;
+  margin-left: 30px;
+  border-radius: 50%;
+}
+
+.userNames {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 15px;
+}
+
+.firstname {
+  margin: 0;
+  color: #fefdfe;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.user {
+  margin-bottom: 5px;
+  color: grey;
+  margin-top: 4px;
+}
+.logoutBtn {
+  color: white;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  background-color: #161f2d;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.centerHome {
+  background-color: #161f2d;
+  width: 50vw;
+  height: 100vh;
+}
+
+.title {
+  font-size: 15px;
+  color: white;
+  margin-left: 10px;
+}
+.centerTop {
+  display: flex;
+  flex-direction: column;
+  background-color: #161f2d;
+
+  border-bottom: 0.1px solid gray;
+  
+  
+}
+.inputTweet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.inputText{
+  text-decoration: none;
+  background-color: #161f2d;
+  color: white;
+  font-size: large;
+  border: none;
+  width: 70%;
+  height: 5vh;
+  margin-bottom: 10px;
+  max-height: 20vh;
+  max-width: 70%;
+  border-bottom: 0.5px solid lightgray;
+}
+
+.countBtnTweet {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  color: white;
+  margin-bottom: 10px;
+}
+.tweetBtn {
+  color: white;
+  padding: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  background-color: #409af0;
+  border: 1px solid #409af0;
+  border-radius: 15px;
+  margin-right: 30px;
+  margin-left: 20px;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.tweetsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.rightHome {
+  width: 30vw;
+  height: 100vh;
+  background-color: #161f2d;
+  border-left: 0.1px solid gray;
+}
+.trendsTitle{
+  color: white;
+  margin-left: 10px;
+
+}
+
+.trendsContainer{
+  background-color: #1E2734;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  border-radius: 10px;
+  margin-right: 8px;
+  margin-left: 8px;
 }
