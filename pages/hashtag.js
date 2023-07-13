@@ -1,10 +1,12 @@
-import Home from '../components/Home';
+import Hashtag from '../components/Hashtag';
 import LastTweet from '../components/LastTweet'
 import Tweet from '../components/Tweet'
 import Trends from '../components/Trends'
 
-function Index() {
-  return <Home />;
+
+function Hashtag() {
+  return <Hashtag />;
 }
 
-export default Index;
+export default Hashtag;
+
