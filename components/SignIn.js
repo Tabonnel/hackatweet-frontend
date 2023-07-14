@@ -13,7 +13,9 @@ function SignIn() {
   const [signInPassword, setSignInPassword] = useState("");
   const router = useRouter();
 
-  const handleConnection = () => {
+  const handleConnection = (event) => {
+    event.preventDefault();
+  
     fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,13 +27,14 @@ function SignIn() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-        dispatch(login({ username: signInUsername, token: data.token }));
-      }
-        if (user.token) {
-          router.push('/home')
+          dispatch(login({ username: signInUsername, token: data.token }));
+        
+          router.push('/home');
+          
         }
       });
   };
+  
 
   return (
     <div className={styles.signInContainer}>
@@ -60,7 +63,7 @@ function SignIn() {
           onChange={(e) => setSignInPassword(e.target.value)}
           value={signInPassword}
         />
-        <button className={styles.btntSignIn} onClick={() => handleConnection()}>
+        <button className={styles.btntSignIn} onClick={(event) => handleConnection(event)}>
           Sign In{" "}
         </button>
       </div>
