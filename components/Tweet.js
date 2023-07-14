@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Tweet(props) {
+const user = useSelector((state) => state.user.value);
+
+console.log(useSelector((state)=> state.user.value.username));
   let iconStyle = {};
 
   const handleTrashClick = () => {
+
     if (user.username !== props.username) {
       iconStyle = { display: "none" };
       return;
@@ -47,10 +51,7 @@ function Tweet(props) {
           {" "}
         </FontAwesomeIcon>
         {props.likeCount}
-        <FontAwesomeIcon
-          icon={faTrash}
-          className={styles.trash}
-          style={iconStyle}
+        <FontAwesomeIcon icon={faTrash} className={styles.trash} style={iconStyle} onClick={()=> handleTrashClick()}
         ></FontAwesomeIcon>
       </div>
     </div>

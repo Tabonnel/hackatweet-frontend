@@ -7,6 +7,8 @@ import Tweet from "./Tweet";
 function Home() {
   const [tweetContent, setTweetContent] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+  const user = useSelector((state) => state.user.value);
+
 
   const [lasttweets, setLasttweets] = useState([]);
 
@@ -29,7 +31,15 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         // Ajouter le nouveau tweet à la liste des tweets existants
-        const newTweet = data.result;
+        const newTweet = {
+          _id: data.result._id,
+          firstname: "John", // Remplacez par les informations utilisateur réelles
+          username: "test", // Remplacez par les informations utilisateur réelles
+          content: tweetContent,
+          date: data.result.date,
+          likeCount: data.result.likeCount,
+          image: data.result.image,
+        };
         setLasttweets((prevTweets) => [newTweet, ...prevTweets]);
         setTweetContent(""); // Réinitialiser le contenu du tweet
       });
@@ -49,13 +59,13 @@ function Home() {
     // Effectuez la logique pour ajouter le nouveau tweet en base de données
 
     // Mettez à jour la valeur qui sert de dépendance pour le useEffect
-    setLasttweets((prevTweets) => [newTweet, ...prevTweets]);
+    setLasttweets((newTweet) => [newTweet, ...lasttweets]);
   };
 
   const sortedTweets = lasttweets.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
-  
+
   const tweets = lasttweets.map((data) => (
     <Tweet key={data._id} {...data} />
   ));
