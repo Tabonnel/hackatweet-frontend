@@ -3,11 +3,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Tweet from "./Tweet";
+import { login, logout } from "../reducers/user";
+import { useRouter } from "next/router";
+
 
 function Home() {
   const [tweetContent, setTweetContent] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
 
   const [lasttweets, setLasttweets] = useState([]);
@@ -70,6 +75,13 @@ function Home() {
     <Tweet key={data._id} {...data} />
   ));
 
+  const handleLogout = () => {
+    dispatch(logout())
+    router.push('/login');
+    
+    
+  };
+
 
 
   return (
@@ -91,7 +103,7 @@ function Home() {
             </div>
           </div>
           <div className={styles.logout}>
-            <button className={styles.logoutBtn}> Logout</button>
+            <button onClick={() => handleLogout()} className={styles.logoutBtn}> Logout</button>
           </div>
         </div>
       </div>
