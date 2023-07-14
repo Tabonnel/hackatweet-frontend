@@ -28,8 +28,10 @@ function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.result);
-        // setTweetsData(data.result[0])
+        // Ajouter le nouveau tweet à la liste des tweets existants
+        const newTweet = data.result;
+        setLasttweets((prevTweets) => [newTweet, ...prevTweets]);
+        setTweetContent(""); // Réinitialiser le contenu du tweet
       });
   };
 
@@ -42,10 +44,21 @@ function Home() {
       });
   }, []);
 
+  // Fonction pour ajouter un nouveau tweet
+  const handleAddTweet = (newTweet) => {
+    // Effectuez la logique pour ajouter le nouveau tweet en base de données
+
+    // Mettez à jour la valeur qui sert de dépendance pour le useEffect
+    setLasttweets((prevTweets) => [newTweet, ...prevTweets]);
+  };
+
+  const sortedTweets = lasttweets.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
   
-  const tweets = lasttweets.map((data, i) => {
-    return <Tweet key={i} {...data} />;
-  });
+  const tweets = lasttweets.map((data) => (
+    <Tweet key={data._id} {...data} />
+  ));
 
 
 
@@ -97,9 +110,7 @@ function Home() {
             </button>
           </div>
         </div>
-        <div className={styles.tweetsContainer}>
-          {tweets}
-          </div>
+        <div className={styles.tweetsContainer}>{tweets}</div>
       </div>
       <div className={styles.rightHome}>
         <div className={styles.trendsTitle}>
