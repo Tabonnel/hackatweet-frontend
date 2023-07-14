@@ -8,7 +8,7 @@ function Home() {
   const [tweetContent, setTweetContent] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
   const user = useSelector((state) => state.user.value);
-
+  console.log(useSelector((state)=> state.user.value.username))
 
   const [lasttweets, setLasttweets] = useState([]);
 
@@ -34,7 +34,7 @@ function Home() {
         const newTweet = {
           _id: data.result._id,
           firstname: "John", // Remplacez par les informations utilisateur réelles
-          username: "test", // Remplacez par les informations utilisateur réelles
+          username: user.username, // Remplacez par les informations utilisateur réelles
           content: tweetContent,
           date: data.result.date,
           likeCount: data.result.likeCount,

@@ -6,32 +6,33 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Tweet(props) {
-const user = useSelector((state) => state.user.value);
+  const user = useSelector((state) => state.user.value);
 
-console.log(useSelector((state)=> state.user.value.username));
   let iconStyle = {};
 
+  if (user.username !== props.username) {
+    iconStyle = { display: "none" };
+    
+  } else {
+    iconStyle = { color: "white" };
+  }
+
+  let idTweet = 'props.result.id';
   const handleTrashClick = () => {
-
-    if (user.username !== props.username) {
-      iconStyle = { display: "none" };
-      return;
-    } else {
-      // fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     if (data.result && data.canBookmark) {
-      //       if (props.isBookmarked) {
-      //         dispatch(removeBookmark(props));
-      //       } else {
-      //         dispatch(addBookmark(props));
-      //       }
-      //     }
-      //   });
-      iconStyle = { color: "white" };
-    }
+    fetch(`http://localhost:3000/tweets/${props.result.id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: idTweet,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          console.log(data.message);
+        }
+      });
   };
-
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetInfos}>
@@ -51,7 +52,11 @@ console.log(useSelector((state)=> state.user.value.username));
           {" "}
         </FontAwesomeIcon>
         {props.likeCount}
-        <FontAwesomeIcon icon={faTrash} className={styles.trash} style={iconStyle} onClick={()=> handleTrashClick()}
+        <FontAwesomeIcon
+          icon={faTrash}
+          className={styles.trash}
+          style={iconStyle}
+          onClick={() => handleTrashClick()}
         ></FontAwesomeIcon>
       </div>
     </div>
