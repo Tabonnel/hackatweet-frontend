@@ -30,8 +30,22 @@
 }
 
 .tweetCountlikes {
-  
   margin-top: 5px;
   margin-bottom: 12px;
   margin-left: 20px;
+
+}
+
+.username{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.likeHeart{
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.trash{
+    margin-left: 10px;
+    cursor: pointer;
 }
