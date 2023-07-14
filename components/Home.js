@@ -47,6 +47,8 @@ function Home() {
     return <Tweet key={i} {...data} />;
   });
 
+
+
   return (
     <div className={styles.main}>
       <div className={styles.leftHome}>

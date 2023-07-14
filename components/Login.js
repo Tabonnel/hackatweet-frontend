@@ -1,19 +1,30 @@
 import styles from "../styles/Login.module.css";
 import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 import Image from "next/image";
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../reducers/user';
+
 
 function Login() {
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
   const [isSignUpVisible, setIsSignUpVisible] = useState(false);
+  const [isSignInVisible, setIsSignInVisible] = useState(false);
   
-  console.log(isSignUpVisible)
+ 
 
   const showSignUp = () => {
 		setIsSignUpVisible(!isSignUpVisible);
     console.log(isSignUpVisible)
 
 	};
+
+  const showSignIn = () => {
+    setIsSignInVisible(!isSignInVisible);
+  };
 
 
   return (
@@ -22,6 +33,13 @@ function Login() {
             <div className = {styles.SignUpContainer}>
               <SignUp/>
             </div>) :''}
+      {isSignInVisible ? (
+        <div className={styles.SignUpContainer}>
+          <SignIn />
+        </div>
+      ) : (
+        ""
+      )}
       <div className={styles.leftContent}>
         <div>
           <Image
@@ -53,7 +71,7 @@ function Login() {
             <button onClick={showSignUp } className={styles.SignIn}> Sign up</button>
             
             <p className={styles.p}> Already have an account ? </p>
-            <button className={styles.SignIn}> Sign In </button>
+            <button onClick={showSignIn} className={styles.SignIn}> Sign In </button>
           </div>
         </div>
       </div>
